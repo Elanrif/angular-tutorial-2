@@ -6,7 +6,10 @@ import { UserComponent } from './user/user.component';
   selector: 'app-root',
   imports: [UserComponent, RouterOutlet],
   template: `
-    <div [contentEditable]="isEditable">hello world!</div>
+    <section (mouseover)="onMouseOver()">
+      There's a secret message for you, hover to reveal:
+      {{ message }}
+    </section>
   `,
   styles: `
    :host {
@@ -15,5 +18,9 @@ import { UserComponent } from './user/user.component';
   `,
 })
 export class AppComponent {
-  isEditable = true;
+  message = '' 
+  
+  onMouseOver() {
+    this.message = 'Way to go ⚠️';
+  }
 }

@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { ChildComponent } from './child/child.component';
 
 @Component({
   selector: 'app-root',
-  imports: [UserComponent, RouterOutlet],
+  imports: [ChildComponent, RouterOutlet],
   template: `
-    <app-user name="ELanrif SB"/>
+    <app-child (addItemEvent)="_addItem($event)" />
+    <p>❤️ all the way down {{items.length}}</p>
   `,
   styles: `
    :host {
@@ -15,4 +17,9 @@ import { UserComponent } from './user/user.component';
   `,
 })
 export class AppComponent {
+  items = new Array();
+
+  _addItem(item: string) {
+    this.items.push(item);
+  }
 }

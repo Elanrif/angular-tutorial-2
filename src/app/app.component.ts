@@ -4,9 +4,15 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `
+    Hello Universe
+  `,
+  styles: `
+   :host {
+    color: #a144eb;
+   }
+  `
 })
 export class AppComponent {
-  title = 'angular-tutorial-2';
+  city = 'San Francisco';
 }

@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { UserComponent } from './user/user.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [UserComponent,RouterOutlet],
   template: `
-    Hello {{ city }}
+   @if (isServerRunning) {
+    <p> The server is running...</p>
+   }@else {
+    <p> Server doesn't running </p>
+   }
   `,
   styles: `
    :host {
@@ -14,5 +19,5 @@ import { RouterOutlet } from '@angular/router';
   `
 })
 export class AppComponent {
-  city = 'San Francisco';
+  isServerRunning = true;
 }

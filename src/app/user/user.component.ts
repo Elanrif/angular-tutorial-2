@@ -1,23 +1,40 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule,FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   template: `
-    <p>Framework: {{ favoriteFramework }}</p>
-    <label for="framework">
-      Favorite Framework:
-      <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
-    </label>
-    <button (click)="showFramework()">Show Framework</button>
+  <h2>Profile Form</h2>
+  <p>Name: {{ profileForm.value.name}}</p>
+  <p>Email: {{ profileForm.value.email}}</p>
+
+    <form 
+    [formGroup]="profileForm"
+    (ngSubmit)="handleSubmit()"
+    >
+      <label>
+        Name
+        <input type="text" formControlName="name" />
+      </label>
+      <label for="">
+        Email
+        <input type="email" formControlName="email" />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
   `,
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
-  favoriteFramework = '';
+  profileForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+  });
 
-  showFramework() {
-    alert(this.favoriteFramework);
+  handleSubmit() {
+    alert(
+      this.profileForm.value.name + ' | ' + this.profileForm.value.email
+    )
   }
 }

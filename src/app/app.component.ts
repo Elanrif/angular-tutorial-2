@@ -8,7 +8,12 @@ import { CommentsComponent } from './comments/comments.component';
   selector: 'app-root',
   imports: [UserComponent, RouterOutlet],
   template: `
-    <app-user/>
+  <nav>
+    <a href="">Home</a>
+    | 
+    <a href="/user">User</a>
+  </nav>
+  <router-outlet />
   `,
   styles: `
    :host {

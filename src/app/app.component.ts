@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CarService } from './car.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,15 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     <a routerLink="/user">User</a>
   </nav>
   <router-outlet />
+  <p> Car listing: {{ display }} </p>
   `,
-  styles: `
-   /* :host {
-    color: #a144eb;
-   } */
-  `,
+  styles: ` `,
 })
-export class AppComponent {}
+export class AppComponent {
+  display = '';
+  carService = inject(CarService); 
+
+  constructor() {
+    this.display = this.carService.getCars().join(' 🍥 ');
+  }
+}

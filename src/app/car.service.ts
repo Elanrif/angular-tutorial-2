@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class CarService {
   cars = ['Sunflower Gt', 'Flexus Sport', 'Sprout Mach One'];
 
-  getCargs(): string[] {
+  getCars(): string[] {
     return this.cars;
   }
 

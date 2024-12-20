@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ReactiveFormsModule,FormControl, FormGroup } from '@angular/forms';
+import {ReactiveFormsModule,Validators,FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -21,15 +21,15 @@ import {ReactiveFormsModule,FormControl, FormGroup } from '@angular/forms';
         Email
         <input type="email" formControlName="email" />
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="!profileForm.valid">Submit</button>
     </form>
   `,
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
   profileForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   handleSubmit() {

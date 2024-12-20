@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CarService } from './car.service';
 
@@ -18,9 +18,7 @@ import { CarService } from './car.service';
 })
 export class AppComponent {
   display = '';
-  carService = inject(CarService); 
-
-  constructor() {
+  constructor(private carService: CarService) {
     this.display = this.carService.getCars().join(' 🍥 ');
   }
 }

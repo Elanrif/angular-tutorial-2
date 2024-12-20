@@ -5,16 +5,19 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-user',
   imports: [FormsModule],
   template: `
-  <p>Username: {{username}}</p>
-  <p>{{username}}'s favorite framework: {{favoriteFramework}}</p>
+    <p>Framework: {{ favoriteFramework }}</p>
     <label for="framework">
       Favorite Framework:
       <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
     </label>
+    <button (click)="showFramework()">Show Framework</button>
   `,
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
   favoriteFramework = '';
-  username = 'Elanrif';
+
+  showFramework() {
+    alert(this.favoriteFramework);
+  }
 }

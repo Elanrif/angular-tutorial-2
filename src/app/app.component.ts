@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CarService } from './car.service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
+import { ReversePipe } from './pipes/reverse-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet,DecimalPipe, DatePipe, CurrencyPipe],
+  imports: [ReversePipe,RouterLink, RouterOutlet,DecimalPipe, DatePipe, CurrencyPipe],
   template: `
   <nav>
     <a [routerLink]="['/']">Home</a>
@@ -19,10 +20,12 @@ import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
     <li>Date with "date" {{birthday | date: 'medium'}}</li>
     <li>Currency with "currency" {{ cost | currency }}</li>
   </ul>
+  <p> Reverse Machine: {{word | reverse}}</p>
   `,
   styles: ` `,
 })
 export class AppComponent {
+  word = 'You are a champion';
   display = '';
   num = 103.1234;
   birthday = new Date(2023, 3, 2);
